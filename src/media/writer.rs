@@ -176,8 +176,8 @@ impl<'a> Writer<'a> {
     /// # Example
     ///
     /// ```no_run
-    /// # use str0m::Rtc;
-    /// # use str0m::media::{Mid, KeyframeRequestKind};
+    /// # use atm0s_custom_str0m::Rtc;
+    /// # use atm0s_custom_str0m::media::{Mid, KeyframeRequestKind};
     /// let mut rtc = Rtc::new();
     ///
     /// // add candidates, do SDP negotiation

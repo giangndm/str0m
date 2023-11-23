@@ -220,7 +220,7 @@ impl Media {
     /// To test whether it's possible to send media with the current direction, use
     ///
     /// ```no_run
-    /// # use str0m::media::Media;
+    /// # use atm0s_custom_str0m::media::Media;
     /// let media: Media = todo!(); // Get hold of media row.
     /// if media.direction().is_sending() {
     ///     // media.write(...);

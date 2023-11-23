@@ -1,8 +1,8 @@
 use std::net::Ipv4Addr;
 use std::time::Duration;
 
-use str0m::RtcConfig;
-use str0m::{Candidate, RtcError};
+use atm0s_custom_str0m::RtcConfig;
+use atm0s_custom_str0m::{Candidate, RtcError};
 use tracing::info_span;
 
 mod common;

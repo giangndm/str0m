@@ -36,7 +36,7 @@ impl<'a> Bwe<'a> {
     /// Staring at the lower layer, call:
     ///
     /// ```
-    /// # use str0m::{Rtc, bwe::Bitrate};
+    /// # use atm0s_custom_str0m::{Rtc, bwe::Bitrate};
     /// let mut rtc = Rtc::new();
     ///
     /// rtc.bwe().set_current_bitrate(Bitrate::kbps(250));
@@ -46,7 +46,7 @@ impl<'a> Bwe<'a> {
     /// possible, make the switch and then update the configuration:
     ///
     /// ```
-    /// # use str0m::{Rtc, bwe::Bitrate};
+    /// # use atm0s_custom_str0m::{Rtc, bwe::Bitrate};
     /// let mut rtc = Rtc::new();
     ///
     /// rtc.bwe().set_current_bitrate(Bitrate::kbps(750));

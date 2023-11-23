@@ -1,11 +1,11 @@
 use std::collections::VecDeque;
 use std::time::{Duration, Instant};
 
-use str0m::format::Codec;
-use str0m::media::MediaKind;
-use str0m::rtp::rtcp::Rtcp;
-use str0m::rtp::{ExtensionValues, RawPacket, SeqNo, Ssrc};
-use str0m::RtcError;
+use atm0s_custom_str0m::format::Codec;
+use atm0s_custom_str0m::media::MediaKind;
+use atm0s_custom_str0m::rtp::rtcp::Rtcp;
+use atm0s_custom_str0m::rtp::{ExtensionValues, RawPacket, SeqNo, Ssrc};
+use atm0s_custom_str0m::RtcError;
 
 mod common;
 use common::{connect_l_r, init_log, progress};

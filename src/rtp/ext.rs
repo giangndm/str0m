@@ -971,7 +971,7 @@ impl UserExtensionValues {
     /// to parse/write.
     ///
     /// ```
-    /// # use str0m::rtp::ExtensionValues;
+    /// # use atm0s_custom_str0m::rtp::ExtensionValues;
     /// let mut exts = ExtensionValues::default();
     ///
     /// #[derive(Debug, PartialEq, Eq)]
@@ -988,7 +988,7 @@ impl UserExtensionValues {
 
     /// Get a user extension value (by type).
     /// ```
-    /// # use str0m::rtp::ExtensionValues;
+    /// # use atm0s_custom_str0m::rtp::ExtensionValues;
     /// let mut exts = ExtensionValues::default();
     ///
     /// #[derive(Debug, PartialEq, Eq)]

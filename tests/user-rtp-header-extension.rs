@@ -1,13 +1,13 @@
 use std::net::Ipv4Addr;
 use std::time::Duration;
 
-use str0m::format::Codec;
-use str0m::media::{Direction, MediaKind};
-use str0m::rtp::Extension;
-use str0m::rtp::ExtensionSerializer;
-use str0m::rtp::ExtensionValues;
-use str0m::Rtc;
-use str0m::{Candidate, Event, RtcError};
+use atm0s_custom_str0m::format::Codec;
+use atm0s_custom_str0m::media::{Direction, MediaKind};
+use atm0s_custom_str0m::rtp::Extension;
+use atm0s_custom_str0m::rtp::ExtensionSerializer;
+use atm0s_custom_str0m::rtp::ExtensionValues;
+use atm0s_custom_str0m::Rtc;
+use atm0s_custom_str0m::{Candidate, Event, RtcError};
 use tracing::info_span;
 
 mod common;

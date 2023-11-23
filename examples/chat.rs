@@ -13,12 +13,12 @@ use std::time::{Duration, Instant};
 
 use rouille::Server;
 use rouille::{Request, Response};
-use str0m::change::{SdpAnswer, SdpOffer, SdpPendingOffer};
-use str0m::channel::{ChannelData, ChannelId};
-use str0m::media::MediaKind;
-use str0m::media::{Direction, KeyframeRequest, MediaData, Mid, Rid};
-use str0m::net::Protocol;
-use str0m::{net::Receive, Candidate, Event, IceConnectionState, Input, Output, Rtc, RtcError};
+use atm0s_custom_str0m::change::{SdpAnswer, SdpOffer, SdpPendingOffer};
+use atm0s_custom_str0m::channel::{ChannelData, ChannelId};
+use atm0s_custom_str0m::media::MediaKind;
+use atm0s_custom_str0m::media::{Direction, KeyframeRequest, MediaData, Mid, Rid};
+use atm0s_custom_str0m::net::Protocol;
+use atm0s_custom_str0m::{net::Receive, Candidate, Event, IceConnectionState, Input, Output, Rtc, RtcError};
 
 mod util;
 

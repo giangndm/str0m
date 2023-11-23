@@ -54,6 +54,30 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d92bec98840b8f03a5ff5413de5293bfcd8bf96467cf5452609f939ec6f5de16"
 
 [[package]]
+name = "atm0s-custom-str0m"
+version = "0.1.0"
+dependencies = [
+ "combine",
+ "crc",
+ "hmac",
+ "once_cell",
+ "openssl",
+ "openssl-sys",
+ "pcap-file",
+ "rand",
+ "rouille",
+ "sctp-proto",
+ "serde",
+ "serde_json",
+ "sha-1",
+ "systemstat",
+ "thiserror",
+ "time",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -923,30 +947,6 @@ name = "smallvec"
 version = "1.11.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4dccd0940a2dcdf68d092b8cbab7dc0ad8fa938bf95787e1b916b0e3d0e8e970"
-
-[[package]]
-name = "str0m"
-version = "0.4.1"
-dependencies = [
- "combine",
- "crc",
- "hmac",
- "once_cell",
- "openssl",
- "openssl-sys",
- "pcap-file",
- "rand",
- "rouille",
- "sctp-proto",
- "serde",
- "serde_json",
- "sha-1",
- "systemstat",
- "thiserror",
- "time",
- "tracing",
- "tracing-subscriber",
-]
 
 [[package]]
 name = "subtle"

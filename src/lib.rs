@@ -51,7 +51,7 @@
 //! made by a remote peer, we need these steps to open the connection.
 //!
 //! ```no_run
-//! # use str0m::{Rtc, Candidate};
+//! # use atm0s_custom_str0m::{Rtc, Candidate};
 //! // Instantiate a new Rtc instance.
 //! let mut rtc = Rtc::new();
 //!
@@ -76,8 +76,8 @@
 //! remote ANSWER to start the connection.
 //!
 //! ```no_run
-//! # use str0m::{Rtc, Candidate};
-//! # use str0m::media::{MediaKind, Direction};
+//! # use atm0s_custom_str0m::{Rtc, Candidate};
+//! # use atm0s_custom_str0m::media::{MediaKind, Direction};
 //! #
 //! // Instantiate a new Rtc instance.
 //! let mut rtc = Rtc::new();
@@ -113,8 +113,8 @@
 //! looks like this.
 //!
 //! ```no_run
-//! # use str0m::{Rtc, Output, IceConnectionState, Event, Input};
-//! # use str0m::net::{Receive, Protocol};
+//! # use atm0s_custom_str0m::{Rtc, Output, IceConnectionState, Event, Input};
+//! # use atm0s_custom_str0m::net::{Receive, Protocol};
 //! # use std::io::ErrorKind;
 //! # use std::net::UdpSocket;
 //! # use std::time::Instant;
@@ -217,8 +217,8 @@
 //! to use when sending.
 //!
 //! ```no_run
-//! # use str0m::Rtc;
-//! # use str0m::media::Mid;
+//! # use atm0s_custom_str0m::Rtc;
+//! # use atm0s_custom_str0m::media::Mid;
 //! # let rtc: Rtc = todo!();
 //! #
 //! // Obtain mid from Event::MediaAdded
@@ -370,7 +370,7 @@
 //! To enable RTP mode
 //!
 //! ```
-//! # use str0m::Rtc;
+//! # use atm0s_custom_str0m::Rtc;
 //! let rtc = Rtc::builder()
 //!     // Enable RTP mode for this Rtc instance.
 //!     // This disables `MediaEvent` and the `Writer::write` API.
@@ -794,7 +794,7 @@ pub enum RtcError {
 /// ## Usage
 ///
 /// ```no_run
-/// # use str0m::{Rtc, Output, Input};
+/// # use atm0s_custom_str0m::{Rtc, Output, Input};
 /// let mut rtc = Rtc::new();
 ///
 /// loop {
@@ -975,7 +975,7 @@ impl Rtc {
     /// To configure the instance, use [`RtcConfig`].
     ///
     /// ```
-    /// use str0m::Rtc;
+    /// use atm0s_custom_str0m::Rtc;
     ///
     /// let rtc = Rtc::new();
     /// ```
@@ -987,7 +987,7 @@ impl Rtc {
     /// Creates a config builder that configures an [`Rtc`] instance.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let rtc = Rtc::builder()
     ///     .set_ice_lite(true)
     ///     .build();
@@ -1035,7 +1035,7 @@ impl Rtc {
     /// The instance can be manually disconnected using [`Rtc::disconnect()`].
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let mut rtc = Rtc::new();
     ///
     /// assert!(rtc.is_alive());
@@ -1053,7 +1053,7 @@ impl Rtc {
     /// produce anymore network output or events.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let mut rtc = Rtc::new();
     ///
     /// rtc.disconnect();
@@ -1077,7 +1077,7 @@ impl Rtc {
     /// however advisable to add at least one local candidate before starting the instance.
     ///
     /// ```
-    /// # use str0m::{Rtc, Candidate};
+    /// # use atm0s_custom_str0m::{Rtc, Candidate};
     /// let mut rtc = Rtc::new();
     ///
     /// let a = "127.0.0.1:5000".parse().unwrap();
@@ -1100,7 +1100,7 @@ impl Rtc {
     /// that are "trickled" from the other side.
     ///
     /// ```
-    /// # use str0m::{Rtc, Candidate};
+    /// # use atm0s_custom_str0m::{Rtc, Candidate};
     /// let mut rtc = Rtc::new();
     ///
     /// let a = "1.2.3.4:5000".parse().unwrap();
@@ -1125,9 +1125,9 @@ impl Rtc {
     /// Make changes to the Rtc session via SDP.
     ///
     /// ```no_run
-    /// # use str0m::Rtc;
-    /// # use str0m::media::{MediaKind, Direction};
-    /// # use str0m::change::SdpAnswer;
+    /// # use atm0s_custom_str0m::Rtc;
+    /// # use atm0s_custom_str0m::media::{MediaKind, Direction};
+    /// # use atm0s_custom_str0m::change::SdpAnswer;
     /// let mut rtc = Rtc::new();
     ///
     /// let mut changes = rtc.sdp_api();
@@ -1158,9 +1158,9 @@ impl Rtc {
     /// Returns `None` if the direction isn't sending (`sendrecv` or `sendonly`).
     ///
     /// ```no_run
-    /// # use str0m::Rtc;
-    /// # use str0m::media::{MediaData, Mid};
-    /// # use str0m::format::PayloadParams;
+    /// # use atm0s_custom_str0m::Rtc;
+    /// # use atm0s_custom_str0m::media::{MediaData, Mid};
+    /// # use atm0s_custom_str0m::format::PayloadParams;
     /// let mut rtc = Rtc::new();
     ///
     /// // add candidates, do SDP negotiation
@@ -1456,7 +1456,7 @@ impl Rtc {
     /// The first found instance would be given the input via [`Rtc::handle_input()`].
     ///
     /// ```no_run
-    /// # use str0m::{Rtc, Input};
+    /// # use atm0s_custom_str0m::{Rtc, Input};
     /// // A vec holding the managed rtc instances. One instance per remote peer.
     /// let mut rtcs = vec![Rtc::new(), Rtc::new(), Rtc::new()];
     ///
@@ -1511,7 +1511,7 @@ impl Rtc {
     /// time obtained via [`Rtc::poll_output()`].
     ///
     /// ```no_run
-    /// # use str0m::{Rtc, Input};
+    /// # use atm0s_custom_str0m::{Rtc, Input};
     /// # use std::time::Instant;
     /// let mut rtc = Rtc::new();
     ///
@@ -1597,7 +1597,7 @@ impl Rtc {
     /// Incoming channel data is via the [`Event::ChannelData`] event.
     ///
     /// ```no_run
-    /// # use str0m::{Rtc, channel::ChannelId};
+    /// # use atm0s_custom_str0m::{Rtc, channel::ChannelId};
     /// let mut rtc = Rtc::new();
     ///
     /// let cid: ChannelId = todo!(); // obtain channel id from Event::ChannelOpen
@@ -1665,7 +1665,7 @@ impl Rtc {
 /// Customized config for creating an [`Rtc`] instance.
 ///
 /// ```
-/// use str0m::RtcConfig;
+/// use atm0s_custom_str0m::RtcConfig;
 ///
 /// let rtc = RtcConfig::new()
 ///     .set_ice_lite(true)
@@ -1711,7 +1711,7 @@ impl RtcConfig {
     /// DTLS fingerprint.
     ///
     /// ```
-    /// use str0m::RtcConfig;
+    /// use atm0s_custom_str0m::RtcConfig;
     ///
     /// let fingerprint = RtcConfig::default()
     ///     .build()
@@ -1728,8 +1728,8 @@ impl RtcConfig {
     /// Use this API to reuse a previously created [`DtlsCert`] if available.
     ///
     /// ```
-    /// use str0m::RtcConfig;
-    /// use str0m::change::DtlsCert;
+    /// use atm0s_custom_str0m::RtcConfig;
+    /// use atm0s_custom_str0m::change::DtlsCert;
     ///
     /// let dtls_cert = DtlsCert::new();
     ///
@@ -1756,7 +1756,7 @@ impl RtcConfig {
     /// Get fingerprint verification mode.
     ///
     /// ```
-    /// # use str0m::RtcConfig;
+    /// # use atm0s_custom_str0m::RtcConfig;
     ///
     /// // Verify that fingerprint verification is enabled by default.
     /// assert!(RtcConfig::default().fingerprint_verification());
@@ -1776,7 +1776,7 @@ impl RtcConfig {
     /// Tells whether ice lite is enabled.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let config = Rtc::builder();
     ///
     /// // Defaults to false.
@@ -1794,7 +1794,7 @@ impl RtcConfig {
     /// Clear all configured codecs.
     ///
     /// ```
-    /// # use str0m::RtcConfig;
+    /// # use atm0s_custom_str0m::RtcConfig;
     ///
     /// // For the session to use only OPUS and VP8.
     /// let mut rtc = RtcConfig::default()
@@ -1855,7 +1855,7 @@ impl RtcConfig {
     /// The default extension map is
     ///
     /// ```
-    /// # use str0m::rtp::{Extension, ExtensionMap};
+    /// # use atm0s_custom_str0m::rtp::{Extension, ExtensionMap};
     /// let exts = ExtensionMap::standard();
     ///
     /// assert_eq!(exts.id_of(Extension::AudioLevel), Some(1));
@@ -1902,7 +1902,7 @@ impl RtcConfig {
     /// None means statistics are disabled.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// # use std::time::Duration;
     /// let config = Rtc::builder();
     ///
@@ -1927,7 +1927,7 @@ impl RtcConfig {
     /// The initial bitrate as set by [`Self::enable_bwe()`].
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let config = Rtc::builder();
     ///
     /// // Defaults to None - BWE off.
@@ -1954,7 +1954,7 @@ impl RtcConfig {
     /// Returns the setting for audio reordering size.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let config = Rtc::builder();
     ///
     /// // Defaults to 15.
@@ -1990,7 +1990,7 @@ impl RtcConfig {
     /// Returns the setting for video reordering size.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let config = Rtc::builder();
     ///
     /// // Defaults to 30.
@@ -2022,7 +2022,7 @@ impl RtcConfig {
     /// Returns the setting for audio resend size.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let config = Rtc::builder();
     ///
     /// // Defaults to 50.
@@ -2052,7 +2052,7 @@ impl RtcConfig {
     /// Returns the setting for video resend size.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let config = Rtc::builder();
     ///
     /// // Defaults to 1000.
@@ -2078,7 +2078,7 @@ impl RtcConfig {
     /// Checks if RTP mode is set.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let config = Rtc::builder();
     ///
     /// // Defaults to false.

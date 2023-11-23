@@ -10,10 +10,10 @@ use std::time::Instant;
 use rouille::Server;
 use rouille::{Request, Response};
 
-use str0m::change::SdpOffer;
-use str0m::net::Protocol;
-use str0m::net::Receive;
-use str0m::{Candidate, Event, IceConnectionState, Input, Output, Rtc, RtcError};
+use atm0s_custom_str0m::change::SdpOffer;
+use atm0s_custom_str0m::net::Protocol;
+use atm0s_custom_str0m::net::Receive;
+use atm0s_custom_str0m::{Candidate, Event, IceConnectionState, Input, Output, Rtc, RtcError};
 
 mod util;
 

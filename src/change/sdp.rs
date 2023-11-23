@@ -51,8 +51,8 @@ impl<'a> SdpApi<'a> {
     /// or if `a=group` doesn't match the number of m-lines.
     ///
     /// ```no_run
-    /// # use str0m::Rtc;
-    /// # use str0m::change::{SdpOffer};
+    /// # use atm0s_custom_str0m::Rtc;
+    /// # use atm0s_custom_str0m::change::{SdpOffer};
     /// // obtain offer from remote peer.
     /// let json_offer: &[u8] = todo!();
     /// let offer: SdpOffer = serde_json::from_slice(json_offer).unwrap();
@@ -115,9 +115,9 @@ impl<'a> SdpApi<'a> {
     /// [`SdpApi::accept_offer()`] before using this pending instance.
     ///
     /// ```no_run
-    /// # use str0m::Rtc;
-    /// # use str0m::media::{MediaKind, Direction};
-    /// # use str0m::change::SdpAnswer;
+    /// # use atm0s_custom_str0m::Rtc;
+    /// # use atm0s_custom_str0m::media::{MediaKind, Direction};
+    /// # use atm0s_custom_str0m::change::SdpAnswer;
     /// let mut rtc = Rtc::new();
     ///
     /// let mut changes = rtc.sdp_api();
@@ -181,7 +181,7 @@ impl<'a> SdpApi<'a> {
     /// If changes have been made, nothing happens until we call [`SdpApi::apply()`].
     ///
     /// ```
-    /// # use str0m::{Rtc, media::MediaKind, media::Direction};
+    /// # use atm0s_custom_str0m::{Rtc, media::MediaKind, media::Direction};
     /// let mut rtc = Rtc::new();
     ///
     /// let mut changes = rtc.sdp_api();
@@ -206,7 +206,7 @@ impl<'a> SdpApi<'a> {
     ///   CNAME in the RTP SDES.
     ///
     /// ```
-    /// # use str0m::{Rtc, media::MediaKind, media::Direction};
+    /// # use atm0s_custom_str0m::{Rtc, media::MediaKind, media::Direction};
     /// let mut rtc = Rtc::new();
     ///
     /// let mut changes = rtc.sdp_api();
@@ -308,7 +308,7 @@ impl<'a> SdpApi<'a> {
     /// useful whe multiple channels are in use at the same time.
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let mut rtc = Rtc::new();
     ///
     /// let mut changes = rtc.sdp_api();
@@ -372,7 +372,7 @@ impl<'a> SdpApi<'a> {
     /// the current [`SdpPendingOffer`].
     ///
     /// ```
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::Rtc;
     /// let mut rtc = Rtc::new();
     ///
     /// let changes = rtc.sdp_api();
@@ -411,8 +411,8 @@ impl<'a> SdpApi<'a> {
     /// ## Example
     ///
     /// ```no_run
-    /// # use str0m::media::{Direction, MediaKind};
-    /// # use str0m::Rtc;
+    /// # use atm0s_custom_str0m::media::{Direction, MediaKind};
+    /// # use atm0s_custom_str0m::Rtc;
     /// let mut rtc = Rtc::new();
     /// let mut changes = rtc.sdp_api();
     /// changes.add_media(MediaKind::Audio, Direction::SendOnly, None, None);
@@ -439,9 +439,9 @@ impl<'a> SdpApi<'a> {
 /// change is as simple as dropping this instance.
 ///
 /// ```no_run
-/// # use str0m::Rtc;
-/// # use str0m::media::{MediaKind, Direction};
-/// # use str0m::change::SdpAnswer;
+/// # use atm0s_custom_str0m::Rtc;
+/// # use atm0s_custom_str0m::media::{MediaKind, Direction};
+/// # use atm0s_custom_str0m::change::SdpAnswer;
 /// let mut rtc = Rtc::new();
 ///
 /// let mut changes = rtc.sdp_api();

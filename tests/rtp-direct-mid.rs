@@ -1,10 +1,10 @@
 use std::collections::VecDeque;
 use std::time::Duration;
 
-use str0m::format::Codec;
-use str0m::media::MediaKind;
-use str0m::rtp::{ExtensionValues, Ssrc};
-use str0m::{Event, RtcError};
+use atm0s_custom_str0m::format::Codec;
+use atm0s_custom_str0m::media::MediaKind;
+use atm0s_custom_str0m::rtp::{ExtensionValues, Ssrc};
+use atm0s_custom_str0m::{Event, RtcError};
 
 mod common;
 use common::{connect_l_r, init_log, progress};

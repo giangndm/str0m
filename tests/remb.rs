@@ -1,9 +1,9 @@
 use std::net::Ipv4Addr;
 use std::time::Duration;
 
-use str0m::bwe::{Bitrate, BweKind};
-use str0m::media::{Direction, MediaKind};
-use str0m::{Candidate, Event, Rtc, RtcError};
+use atm0s_custom_str0m::bwe::{Bitrate, BweKind};
+use atm0s_custom_str0m::media::{Direction, MediaKind};
+use atm0s_custom_str0m::{Candidate, Event, Rtc, RtcError};
 use tracing::info_span;
 
 mod common;

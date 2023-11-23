@@ -165,7 +165,7 @@ num_id!(SessionId, u64);
 /// To get the RTP u16 value from a `SeqNo`, use `as_u16()` or cast it to u16.
 ///
 /// ```
-/// # use str0m::rtp::SeqNo;
+/// # use atm0s_custom_str0m::rtp::SeqNo;
 /// let seq_no: SeqNo = 65_537.into();
 ///
 /// // Use `as_u16()`.
@@ -210,7 +210,7 @@ impl SeqNo {
     /// This is the same as discarding the top 48 bits by casting to a u16.
     ///
     /// ```
-    /// # use str0m::rtp::SeqNo;
+    /// # use atm0s_custom_str0m::rtp::SeqNo;
     /// let seq_no: SeqNo = 65_537.into();
     ///
     /// // Use `as_u16()`.
@@ -226,7 +226,7 @@ impl SeqNo {
     /// Get the rollover counter (ROC) value.
     ///
     /// ```
-    /// # use str0m::rtp::SeqNo;
+    /// # use atm0s_custom_str0m::rtp::SeqNo;
     /// // More than 2^16, thus rolled over.
     /// let seq_no: SeqNo = 95_000.into();
     ///

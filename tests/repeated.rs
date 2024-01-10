@@ -1,5 +1,6 @@
 use std::time::Duration;
 
+use bytes::Bytes;
 use str0m::format::Codec;
 use str0m::media::MediaKind;
 use str0m::rtp::{ExtensionValues, Ssrc};
@@ -69,7 +70,7 @@ pub fn repeated() -> Result<(), RtcError> {
                     false,
                     exts,
                     false,
-                    vec![0x01, 0x02, 0x03, 0x04],
+                    Bytes::from(vec![0x01, 0x02, 0x03, 0x04]),
                 )
                 .expect("clean write");
         }

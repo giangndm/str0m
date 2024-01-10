@@ -1,6 +1,8 @@
 use std::collections::VecDeque;
 use std::time::{Duration, Instant};
 
+use bytes::Bytes;
+
 use crate::bwe::BweKind;
 use crate::dtls::{KeyingMaterial, SrtpProfile};
 use crate::format::CodecConfig;
@@ -429,7 +431,8 @@ impl Session {
             receipt_outer
         };
 
-        let Some(packet) = stream.handle_rtp(now, header, data, receipt.seq_no, receipt.time)
+        let Some(packet) =
+            stream.handle_rtp(now, header, Bytes::from(data), receipt.seq_no, receipt.time)
         else {
             return;
         };

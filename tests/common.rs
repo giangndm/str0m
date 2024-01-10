@@ -5,6 +5,7 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Once;
 use std::time::{Duration, Instant};
 
+use bytes::Bytes;
 use pcap_file::pcap::PcapReader;
 use rand::Rng;
 use str0m::change::SdpApi;
@@ -274,7 +275,7 @@ pub fn connect_l_r() -> (TestRtc, TestRtc) {
     (l, r)
 }
 
-pub fn vp8_data() -> Vec<(Duration, RtpHeader, Vec<u8>)> {
+pub fn vp8_data() -> Vec<(Duration, RtpHeader, Bytes)> {
     let reader = Cursor::new(include_bytes!("data/vp8.pcap"));
     let mut r = PcapReader::new(reader).expect("vp8 pcap reader");
 
@@ -295,16 +296,16 @@ pub fn vp8_data() -> Vec<(Duration, RtpHeader, Vec<u8>)> {
         // This magic number 42 is the ethernet/IP/UDP framing of the packet.
         let rtp_data = &pkt.data[42..];
 
-        let header = RtpHeader::_parse(rtp_data, &exts).unwrap();
-        let payload = &rtp_data[header.header_len..];
+        let header = RtpHeader::_parse(&rtp_data, &exts).unwrap();
+        let payload = Bytes::from(rtp_data[header.header_len..].to_vec());
 
-        ret.push((relative_time, header, payload.to_vec()));
+        ret.push((relative_time, header, payload));
     }
 
     ret
 }
 
-pub fn vp9_data() -> Vec<(Duration, RtpHeader, Vec<u8>)> {
+pub fn vp9_data() -> Vec<(Duration, RtpHeader, Bytes)> {
     let reader = Cursor::new(include_bytes!("data/vp9.pcap"));
     let mut r = PcapReader::new(reader).expect("vp9 pcap reader");
 
@@ -328,13 +329,13 @@ pub fn vp9_data() -> Vec<(Duration, RtpHeader, Vec<u8>)> {
         let header = RtpHeader::_parse(rtp_data, &exts).unwrap();
         let payload = &rtp_data[header.header_len..];
 
-        ret.push((relative_time, header, payload.to_vec()));
+        ret.push((relative_time, header, Bytes::from(payload.to_vec())));
     }
 
     ret
 }
 
-pub fn h264_data() -> Vec<(Duration, RtpHeader, Vec<u8>)> {
+pub fn h264_data() -> Vec<(Duration, RtpHeader, Bytes)> {
     let reader = Cursor::new(include_bytes!("data/h264.pcap"));
     let mut r = PcapReader::new(reader).expect("h264 pcap reader");
 
@@ -358,7 +359,7 @@ pub fn h264_data() -> Vec<(Duration, RtpHeader, Vec<u8>)> {
         let header = RtpHeader::_parse(rtp_data, &exts).unwrap();
         let payload = &rtp_data[header.header_len..];
 
-        ret.push((relative_time, header, payload.to_vec()));
+        ret.push((relative_time, header, Bytes::from(payload.to_vec())));
     }
 
     ret

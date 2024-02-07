@@ -2,6 +2,8 @@ use std::collections::VecDeque;
 use std::time::Duration;
 use std::time::Instant;
 
+use bytes::Bytes;
+
 use crate::format::CodecConfig;
 use crate::format::PayloadParams;
 use crate::io::DATAGRAM_MAX_PACKET_SIZE;
@@ -263,7 +265,7 @@ impl StreamTx {
         marker: bool,
         ext_vals: ExtensionValues,
         nackable: bool,
-        payload: Vec<u8>,
+        payload: Bytes,
     ) -> Result<(), RtcError> {
         let first_call = self.rtp_and_wallclock.is_none();
 

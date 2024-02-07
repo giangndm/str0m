@@ -4,6 +4,8 @@ use std::fmt;
 use std::ops::{Range, RangeInclusive};
 use std::time::Instant;
 
+use bytes::Bytes;
+
 use crate::rtp_::{ExtensionValues, MediaTime, RtpHeader, SenderInfo, SeqNo};
 
 use super::contiguity::{self, Contiguity};
@@ -70,7 +72,7 @@ impl Depacketized {
 #[derive(Debug)]
 struct Entry {
     meta: RtpMeta,
-    data: Vec<u8>,
+    data: Bytes,
     head: bool,
     tail: bool,
 }
@@ -111,7 +113,7 @@ impl DepacketizingBuffer {
         }
     }
 
-    pub fn push(&mut self, meta: RtpMeta, data: Vec<u8>) {
+    pub fn push(&mut self, meta: RtpMeta, data: Bytes) {
         // We're not emitting samples in the wrong order. If we receive
         // packets that are before the last emitted, we drop.
         //
@@ -533,7 +535,7 @@ mod test {
                 },
             };
 
-            buf.push(meta, data.to_vec());
+            buf.push(meta, Bytes::from(data.to_vec()));
 
             let mut depacks = vec![];
             while let Some(res) = buf.pop() {
@@ -744,7 +746,7 @@ mod test {
 
         for input in &inputs {
             let (meta, data) = construct_input(input.clone());
-            buffer.push(meta, data);
+            buffer.push(meta, Bytes::from(data));
         }
 
         let res0before = buffer.pop().unwrap().unwrap(); // Pop PID: 23860, `contiguous_seq == true`.
@@ -758,7 +760,7 @@ mod test {
             if meta.seq_no == SeqNo::from(8689) {
                 continue; // Skip RTP packet with seq_num=8689 vp9_payload=[20, 2, 2, 2, 2, 2, 2, 2, 2].
             }
-            buffer.push(meta.clone(), data.clone());
+            buffer.push(meta.clone(), Bytes::from(data.clone()));
         }
 
         let res0after = buffer.pop().unwrap().unwrap(); // Pop PID: 23860, `contiguous_seq == true`.
@@ -768,7 +770,7 @@ mod test {
         for input in &inputs {
             let (meta, data) = construct_input(input.clone());
             if meta.seq_no == SeqNo::from(8689) {
-                buffer.push(meta.clone(), data.clone()); // Send RTP packet with seq_num=8689 vp9_payload=[20, 2, 2, 2, 2, 2, 2, 2, 2].
+                buffer.push(meta.clone(), Bytes::from(data.clone())); // Send RTP packet with seq_num=8689 vp9_payload=[20, 2, 2, 2, 2, 2, 2, 2, 2].
                 break;
             }
         }

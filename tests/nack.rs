@@ -1,6 +1,7 @@
 use std::collections::VecDeque;
 use std::time::{Duration, Instant};
 
+use bytes::Bytes;
 use str0m::format::Codec;
 use str0m::media::MediaKind;
 use str0m::rtp::rtcp::Rtcp;
@@ -67,7 +68,7 @@ pub fn loss_recovery() -> Result<(), RtcError> {
                 false,
                 exts,
                 true,
-                to_write.to_vec(),
+                Bytes::from(to_write.to_vec()),
             )
             .expect("clean write");
 
@@ -255,7 +256,7 @@ pub fn nack_delay() -> Result<(), RtcError> {
                         false,
                         exts,
                         true,
-                        packet.to_vec(),
+                        Bytes::from(packet.to_vec()),
                     )
                     .expect("clean write");
             }

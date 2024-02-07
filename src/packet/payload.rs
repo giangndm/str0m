@@ -4,6 +4,8 @@ use std::collections::{BTreeMap, VecDeque};
 use std::fmt;
 use std::time::{Duration, Instant};
 
+use bytes::Bytes;
+
 use crate::format::CodecSpec;
 use crate::media::ToPayload;
 use crate::rtp_::{ExtensionValues, Frequency, MediaTime, Rid, RtpHeader, SeqNo, Ssrc};
@@ -72,7 +74,7 @@ impl Payloader {
                 marker,
                 ext_vals.clone(),
                 nackable,
-                data,
+                Bytes::from(data),
             );
         }
 

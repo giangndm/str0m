@@ -936,6 +936,7 @@ name = "str0m"
 version = "0.4.1"
 dependencies = [
  "_str0m_test",
+ "bytes",
  "combine",
  "crc",
  "fastrand",

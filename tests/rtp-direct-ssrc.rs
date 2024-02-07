@@ -1,6 +1,7 @@
 use std::collections::VecDeque;
 use std::time::Duration;
 
+use bytes::Bytes;
 use str0m::format::Codec;
 use str0m::media::MediaKind;
 use str0m::rtp::{ExtensionValues, Ssrc};
@@ -81,7 +82,7 @@ pub fn rtp_direct_ssrc() -> Result<(), RtcError> {
                         false,
                         exts,
                         false,
-                        packet.to_vec(),
+                        Bytes::from(packet.to_vec()),
                     )
                     .expect("clean write");
             }

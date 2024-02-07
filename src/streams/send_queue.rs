@@ -198,6 +198,8 @@ impl TotalQueue {
 
 #[cfg(test)]
 mod test {
+    use bytes::Bytes;
+
     use crate::rtp_::MediaTime;
     use crate::rtp_::RtpHeader;
 
@@ -211,7 +213,7 @@ mod test {
             seq_no: 0.into(),
             time: MediaTime::from_90khz(10),
             header: RtpHeader::default(),
-            payload: vec![],
+            payload: Bytes::from(vec![]),
             timestamp: Instant::now(),
             last_sender_info: None,
             nackable: true,
@@ -246,7 +248,7 @@ mod test {
             seq_no: 0.into(),
             time: MediaTime::from_90khz(10),
             header: RtpHeader::default(),
-            payload: vec![42, 42],
+            payload: Bytes::from(vec![42, 42]),
             timestamp: start,
             last_sender_info: None,
             nackable: true,

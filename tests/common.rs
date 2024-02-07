@@ -5,6 +5,7 @@ use std::ops::{Deref, DerefMut};
 use std::sync::Once;
 use std::time::{Duration, Instant};
 
+use bytes::Bytes;
 use pcap_file::pcap::PcapReader;
 use str0m::change::SdpApi;
 use str0m::format::Codec;
@@ -272,7 +273,7 @@ pub fn connect_l_r() -> (TestRtc, TestRtc) {
     (l, r)
 }
 
-pub type PcapData = Vec<(Duration, RtpHeader, Vec<u8>)>;
+pub type PcapData = Vec<(Duration, RtpHeader, Bytes)>;
 
 pub fn vp8_data() -> PcapData {
     load_pcap_data(include_bytes!("data/vp8.pcap"))
@@ -314,7 +315,7 @@ pub fn load_pcap_data(data: &[u8]) -> PcapData {
         let header = RtpHeader::_parse(rtp_data, &exts).unwrap();
         let payload = &rtp_data[header.header_len..];
 
-        ret.push((relative_time, header, payload.to_vec()));
+        ret.push((relative_time, header, Bytes::from(payload.to_vec())));
     }
 
     ret

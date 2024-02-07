@@ -3,6 +3,8 @@
 use std::time::Duration;
 use std::time::Instant;
 
+use bytes::Bytes;
+
 use crate::change::{SdpAnswer, SdpOffer};
 use crate::crypto::KeyingMaterial;
 use crate::crypto::SrtpProfile;
@@ -117,7 +119,7 @@ pub fn depack(data: &[u8]) -> Option<()> {
             };
             let len = rng.usize(1200)?;
             let data = rng.slice(len)?.to_vec();
-            depack.push(meta, data);
+            depack.push(meta, Bytes::from(data));
         } else {
             depack.pop();
         }
